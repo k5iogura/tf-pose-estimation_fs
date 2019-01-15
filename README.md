@@ -1,5 +1,6 @@
 # tf-pose-estimation
 
+[Original Git here](https://github.com/ildoonet/tf-pose-estimation)  
 'Openpose' for human pose estimation have been implemented using Tensorflow. It also provides several variants that have made some changes to the network structure for **real-time processing on the CPU or low-power embedded devices.**
 
 
@@ -26,9 +27,9 @@ Implemented features are listed here : [features](./etcs/feature.md)
 
 You need dependencies below.
 
-- python3
-- tensorflow 1.4.1+
-- opencv3, protobuf, python3-tk
+- python
+- tensorflow 1.4.1
+- opencv, protobuf, python-tk
 
 ### Opensources
 
@@ -42,25 +43,19 @@ You need dependencies below.
 Clone the repo and install 3rd-party libraries.
 
 ```bash
+$ pip install tensorflow==1.4.1
+$ pip install matplotlib==2.0.0
+# apt install python-tk
+
 $ git clone https://www.github.com/ildoonet/tf-openpose
 $ cd tf-openpose
-$ pip3 install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 Build c++ library for post processing. See : https://github.com/ildoonet/tf-pose-estimation/tree/master/tf_pose/pafprocess
 ```
 $ cd tf_pose/pafprocess
-$ swig -python -c++ pafprocess.i && python3 setup.py build_ext --inplace
-```
-
-### Package Install
-
-Alternatively, you can install this repo as a shared package using pip.
-
-```bash
-$ git clone https://www.github.com/ildoonet/tf-openpose
-$ cd tf-openpose
-$ python setup.py install
+$ swig -python -c++ pafprocess.i && python setup.py build_ext --inplace
 ```
 
 #### Test installed package
@@ -71,41 +66,10 @@ python -c 'import tf_pose; tf_pose.infer(image="./images/p1.jpg")'
 
 
 ## Models
-
-I have tried multiple variations of models to find optmized network architecture. Some of them are below and checkpoint files are provided for research purpose. 
-
-- cmu 
-  - the model based VGG pretrained network which described in the original paper.
-  - I converted Weights in Caffe format to use in tensorflow.
-  - [pretrained weight download](https://www.dropbox.com/s/xh5s7sb7remu8tx/openpose_coco.npy?dl=0)
-  
-- dsconv
-  - Same architecture as the cmu version except for the **depthwise separable convolution** of mobilenet.
-  - I trained it using 'transfer learning', but it provides not-enough speed and accuracy.
-  
-- mobilenet
-  - Based on the mobilenet paper, 12 convolutional layers are used as feature-extraction layers.
-  - To improve on small person, **minor modification** on the architecture have been made.
-  - Three models were learned according to network size parameters.
-    - mobilenet
-      - 368x368 : [checkpoint weight download](https://www.dropbox.com/s/09xivpuboecge56/mobilenet_0.75_0.50_model-388003.zip?dl=0)
-    - mobilenet_fast
-    - mobilenet_accurate
-  - I published models which is not the best ones, but you can test them before you trained a model from the scratch.
-
 ### Download Tensorflow Graph File(pb file)
 
-Before running demo, you should download graph files. You can deploy this graph on your mobile or other platforms.
-
-- cmu (trained in 656x368)
-- mobilenet_thin (trained in 432x368)
-
-CMU's model graphs are too large for git, so I uploaded them on an external cloud. You should download them if you want to use cmu's original model. Download scripts are provided in the model folder.
-
-```
-$ cd models/graph/cmu
-$ bash download.sh
-```
+Notice: No more original cmu and mobilenet .pb file on dropbox area.  
+Use Download script on models/pretrained.  
 
 ### Inference Time
 
