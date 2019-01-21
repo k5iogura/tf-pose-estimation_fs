@@ -21,7 +21,7 @@ def get_estimator(model='cmu', resize='0x0', resize_out_ratio=4.0):
     return e
 
 
-def infer(image, model='cmu', resize='0x0', resize_out_ratio=4.0):
+def infer(image, model='mobilenet_thin', resize='0x0', resize_out_ratio=4.0):
     """
 
     :param image:
