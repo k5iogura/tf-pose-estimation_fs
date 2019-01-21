@@ -60,12 +60,12 @@ $ swig -python -c++ pafprocess.i && python setup.py build_ext --inplace
 ```
 
 #### Test installed package
-![package_install_result](./etcs/imgcat0.gif)
 ```bash
 $ cd tf-pose-estimation_fs
 $ python -c 'import tf_pose; tf_pose.infer(image="./images/p1.jpg")'
+[2019-01-21 17:15:12,966] [TfPoseEstimator] [INFO] loading graph from /home/ogura/tf-pose-estimation_fs/models/graph/mobilenet_thin/graph_opt.pb(default size=432x368)
+$
 ```
-
 
 ## Models
 ### Download Tensorflow Graph File(pb file)
@@ -99,8 +99,8 @@ The image flag MUST be relative to the src folder with no "~", i.e:
 ```
 
 Then you will see the screen as below with pafmap, heatmap, result and etc.
-
-![inferent_result](./etcs/inference_result2.png)
+![inferent_result1](./files/run_py.png)  
+![inferent_result](./etcs/inference_result2.png)  
 
 ### Realtime Webcam
 
