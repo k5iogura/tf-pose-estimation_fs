@@ -63,7 +63,8 @@ $ swig -python -c++ pafprocess.i && python setup.py build_ext --inplace
 ```bash
 $ cd tf-pose-estimation_fs
 $ python -c 'import tf_pose; tf_pose.infer(image="./images/p1.jpg")'
-[2019-01-21 17:15:12,966] [TfPoseEstimator] [INFO] loading graph from /home/ogura/tf-pose-estimation_fs/models/graph/mobilenet_thin/graph_opt.pb(default size=432x368)
+[2019-01-21 17:15:12,966] [TfPoseEstimator] [INFO] loading graph from 
+  tf-pose-estimation_fs/models/graph/mobilenet_thin/graph_opt.pb(default size=432x368)
 $
 ```
 
