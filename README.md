@@ -45,10 +45,11 @@ Clone the repo and install 3rd-party libraries.
 ```bash
 $ pip install tensorflow==1.4.1
 $ pip install matplotlib==2.0.0
-# apt install python-tk
+# apt install python-tk swig
+$ pip install psutil scipy
 
-$ git clone https://www.github.com/ildoonet/tf-openpose
-$ cd tf-openpose
+$ git clone https://www.github.com/k5iogura/tf-pose-estimation_fs
+$ cd tf-pose-estimation_fs
 $ pip install -r requirements.txt
 ```
 
@@ -61,7 +62,8 @@ $ swig -python -c++ pafprocess.i && python setup.py build_ext --inplace
 #### Test installed package
 ![package_install_result](./etcs/imgcat0.gif)
 ```bash
-python -c 'import tf_pose; tf_pose.infer(image="./images/p1.jpg")'
+$ cd tf-pose-estimation_fs
+$ python -c 'import tf_pose; tf_pose.infer(image="./images/p1.jpg")'
 ```
 
 
